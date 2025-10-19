@@ -2165,5 +2165,43 @@ nav .category-card {
 .dropdown:hover .dropdown-menu {
     display: block !important;
 }
+/* NUCLEAR OPTION - Hide all static categories */
+
+/* Hide announcement banner */
+.announcement-bar {
+    display: none !important;
+}
+
+/* Hide categories-grid NOT in categories-section */
+.categories-grid:not(.categories-section .categories-grid) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+}
+
+/* Hide category-card elements outside proper sections */
+.category-card:not(.categories-section .category-card) {
+    display: none !important;
+}
+
+/* Hide standalone categories */
+body > .categories-grid,
+main > .categories-grid,
+.hero + .categories-grid,
+.main-nav + .categories-grid {
+    display: none !important;
+}
+
+/* ONLY show in categories-section */
+.categories-section .categories-grid {
+    display: grid !important;
+}
+
+.categories-section .category-card {
+    display: block !important;
+}
+
+
 
 ```
