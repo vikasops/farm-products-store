@@ -6,16 +6,9 @@
     <meta name="description" content="DesiSuddha - Buy pure desi wheat, pulses, spices, and organic products directly from Indian farms">
     <title>DesiSuddha - Pure Desi Products from Indian Farms</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,11 +16,6 @@
     <div id="loading-spinner" class="loading-spinner">
         <div class="spinner"></div>
         <p>Loading...</p>
-    </div>
-
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        <i class="fas fa-truck"></i> Next Day Delivery | Pure Desi Quality | Free Shipping on Orders Above ₹999
     </div>
 
     <!-- Header -->
@@ -62,8 +50,10 @@
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#products" class="nav-link">All Products</a></li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link">Categories <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu" id="categories-dropdown"></ul>
+                        <a href="#products" class="nav-link">Categories <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu" id="categories-dropdown">
+                            <!-- Categories will be populated here by JavaScript -->
+                        </ul>
                     </li>
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -467,7 +457,7 @@
 
     <div class="toast" id="toast"></div>
 
-    <!-- Firebase SDKs MUST load BEFORE script.js -->
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
