@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fresh Farm Organics - Buy organic wheat, pulses, spices, rice, and other farm products directly from our fields">
+    <meta name="keywords" content="organic farm products, wheat, pulses, spices, rice, organic food, farm fresh">
+    <title>Fresh Farm Organics - Buy Organic Farm Products Online</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <i class="fas fa-truck"></i> Next Day Delivery Available | Use Code <strong>WELCOME10</strong> for 10% Off
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo-section">
+                    <h1 class="logo">🌾 Fresh Farm Organics</h1>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search products...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+
+                <!-- Header Icons -->
+                <div class="header-icons">
+                    <button class="icon-btn" id="account-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="icon-btn cart-btn" id="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cart-badge">0</span>
+                    </button>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#products" class="nav-link">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Categories <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu" id="categories-dropdown">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- HOME PAGE -->
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h2 class="hero-title">Switch to Purity, Switch to Organic</h2>
+                        <p class="hero-subtitle">Fresh, organic products directly from our fields to your home</p>
+                        <button class="btn btn-primary hero-btn" onclick="navigateToProducts()">
+                            Shop Now <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="why-choose-us">
+                <div class="container">
+                    <h2 class="section-title">Why Choose Us</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🌱</div>
+                            <h3>Sustainable Farming</h3>
+                            <p>Eco-friendly farming techniques</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🚫</div>
+                            <h3>Chemical Pesticide-free</h3>
+                            <p>100% natural, no harmful chemicals</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🧬</div>
+                            <h3>Non-GMO Produce</h3>
+                            <p>Pure, naturally grown products</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🤝</div>
+                            <h3>Locally Sourced</h3>
+                            <p>Ethically sourced from local farms</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">✅</div>
+                            <h3>250+ Quality Tests</h3>
+                            <p>Rigorous quality standards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bestsellers -->
+            <div class="bestsellers-section">
+                <div class="container">
+                    <h2 class="section-title">Bestsellers</h2>
+                    <div class="products-grid" id="bestsellers-grid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shop by Category -->
+            <div class="categories-section">
+                <div class="container">
+                    <h2 class="section-title">Shop By Category</h2>
+                    <div class="categories-grid" id="categories-grid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews -->
+            <div class="reviews-section">
+                <div class="container">
+                    <h2 class="section-title">From Our Customers</h2>
+                    <div class="reviews-carousel" id="reviews-carousel">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications-section">
+                <div class="container">
+                    <h2 class="section-title">Organic Certifications</h2>
+                    <div class="certifications-grid">
+                        <div class="cert-logo">USDA Organic</div>
+                        <div class="cert-logo">Jaivik Bharat</div>
+                        <div class="cert-logo">INDOCERT</div>
+                        <div class="cert-logo">ISO 22000</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS PAGE -->
+        <section id="products" class="page">
+            <div class="container">
+                <div class="products-header">
+                    <h2 class="page-title">All Products</h2>
+                    <div class="products-controls">
+                        <select id="category-filter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <!-- Populated dynamically -->
+                        </select>
+                        <select id="sort-select" class="filter-select">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Rating</option>
+                            <option value="name">Name: A-Z</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products-count" id="products-count"></div>
+                <div class="products-grid" id="products-grid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page">
+            <div class="container">
+                <h2 class="page-title">About Us</h2>
+                <div class="about-content">
+                    <p>We've turned the wheel full circle at Fresh Farm Organics, by building a culture that thrives on the principles of health, ecology, fairness and care. From nurturing our soil and crops with unadulterated nourishment to testing each product for 250+ quality standards, we follow the highest standards of quality and hygiene.</p>
+                    <p>Our mission is to provide pure, organic products directly from our fields to your home, ensuring you and your family get the best nutrition without any harmful chemicals.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page">
+            <div class="container">
+                <h2 class="page-title">Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                        <p><i class="fas fa-envelope"></i> info@freshfarmorganics.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Farm Location, City, State, PIN</p>
+                    </div>
+                    <div class="
