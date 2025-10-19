@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fresh Farm Organics - Buy organic wheat, pulses, spices, rice, and other farm products directly from our fields">
-    <meta name="keywords" content="organic farm products, wheat, pulses, spices, rice, organic food, farm fresh">
     <title>Fresh Farm Organics - Buy Organic Farm Products Online</title>
     
     <!-- Favicon -->
@@ -35,18 +34,15 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <!-- Logo -->
                 <div class="logo-section">
                     <h1 class="logo">🌾 Fresh Farm Organics</h1>
                 </div>
 
-                <!-- Search Bar -->
                 <div class="search-bar">
                     <input type="text" id="search-input" placeholder="Search products...">
                     <button class="search-btn"><i class="fas fa-search"></i></button>
                 </div>
 
-                <!-- Header Icons -->
                 <div class="header-icons">
                     <button class="icon-btn" id="account-btn">
                         <i class="fas fa-user"></i>
@@ -61,16 +57,13 @@
                 </div>
             </div>
 
-            <!-- Navigation -->
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#products" class="nav-link">All Products</a></li>
                     <li class="dropdown">
                         <a href="#" class="nav-link">Categories <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu" id="categories-dropdown">
-                            <!-- Populated dynamically -->
-                        </ul>
+                        <ul class="dropdown-menu" id="categories-dropdown"></ul>
                     </li>
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -79,11 +72,9 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <!-- HOME PAGE -->
         <section id="home" class="page active">
-            <!-- Hero Section -->
             <div class="hero">
                 <div class="container">
                     <div class="hero-content">
@@ -96,7 +87,6 @@
                 </div>
             </div>
 
-            <!-- Why Choose Us -->
             <div class="why-choose-us">
                 <div class="container">
                     <h2 class="section-title">Why Choose Us</h2>
@@ -130,37 +120,27 @@
                 </div>
             </div>
 
-            <!-- Bestsellers -->
             <div class="bestsellers-section">
                 <div class="container">
                     <h2 class="section-title">Bestsellers</h2>
-                    <div class="products-grid" id="bestsellers-grid">
-                        <!-- Populated dynamically -->
-                    </div>
+                    <div class="products-grid" id="bestsellers-grid"></div>
                 </div>
             </div>
 
-            <!-- Shop by Category -->
             <div class="categories-section">
                 <div class="container">
                     <h2 class="section-title">Shop By Category</h2>
-                    <div class="categories-grid" id="categories-grid">
-                        <!-- Populated dynamically -->
-                    </div>
+                    <div class="categories-grid" id="categories-grid"></div>
                 </div>
             </div>
 
-            <!-- Customer Reviews -->
             <div class="reviews-section">
                 <div class="container">
                     <h2 class="section-title">From Our Customers</h2>
-                    <div class="reviews-carousel" id="reviews-carousel">
-                        <!-- Populated dynamically -->
-                    </div>
+                    <div class="reviews-carousel" id="reviews-carousel"></div>
                 </div>
             </div>
 
-            <!-- Certifications -->
             <div class="certifications-section">
                 <div class="container">
                     <h2 class="section-title">Organic Certifications</h2>
@@ -182,7 +162,6 @@
                     <div class="products-controls">
                         <select id="category-filter" class="filter-select">
                             <option value="">All Categories</option>
-                            <!-- Populated dynamically -->
                         </select>
                         <select id="sort-select" class="filter-select">
                             <option value="featured">Featured</option>
@@ -194,9 +173,7 @@
                     </div>
                 </div>
                 <div class="products-count" id="products-count"></div>
-                <div class="products-grid" id="products-grid">
-                    <!-- Populated dynamically -->
-                </div>
+                <div class="products-grid" id="products-grid"></div>
             </div>
         </section>
 
@@ -205,8 +182,8 @@
             <div class="container">
                 <h2 class="page-title">About Us</h2>
                 <div class="about-content">
-                    <p>We've turned the wheel full circle at Fresh Farm Organics, by building a culture that thrives on the principles of health, ecology, fairness and care. From nurturing our soil and crops with unadulterated nourishment to testing each product for 250+ quality standards, we follow the highest standards of quality and hygiene.</p>
-                    <p>Our mission is to provide pure, organic products directly from our fields to your home, ensuring you and your family get the best nutrition without any harmful chemicals.</p>
+                    <p>We've turned the wheel full circle at Fresh Farm Organics, by building a culture that thrives on the principles of health, ecology, fairness and care.</p>
+                    <p>Our mission is to provide pure, organic products directly from our fields to your home.</p>
                 </div>
             </div>
         </section>
@@ -222,4 +199,281 @@
                         <p><i class="fas fa-envelope"></i> info@freshfarmorganics.com</p>
                         <p><i class="fas fa-map-marker-alt"></i> Farm Location, City, State, PIN</p>
                     </div>
-                    <div class="
+                    <div class="contact-form">
+                        <h3>Send us a message</h3>
+                        <form id="contact-form">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN LOGIN -->
+        <section id="admin-login" class="page">
+            <div class="container">
+                <div class="login-box">
+                    <h2>Admin Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Login <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </form>
+                    <p class="error-message" id="login-error"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN DASHBOARD -->
+        <section id="admin-dashboard" class="page">
+            <div class="admin-layout">
+                <aside class="admin-sidebar">
+                    <h3>Admin Panel</h3>
+                    <nav class="admin-nav">
+                        <a href="#" class="admin-nav-link active" data-section="overview">
+                            <i class="fas fa-dashboard"></i> Dashboard
+                        </a>
+                        <a href="#" class="admin-nav-link" data-section="products">
+                            <i class="fas fa-box"></i> Products
+                        </a>
+                        <a href="#" class="admin-nav-link" data-section="orders">
+                            <i class="fas fa-shopping-bag"></i> Orders
+                        </a>
+                        <a href="#" class="admin-nav-link" onclick="adminLogout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </nav>
+                </aside>
+
+                <div class="admin-content">
+                    <div class="admin-section active" id="admin-overview">
+                        <h2>Dashboard Overview</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <i class="fas fa-box"></i>
+                                <div>
+                                    <h3 id="total-products">0</h3>
+                                    <p>Total Products</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-shopping-bag"></i>
+                                <div>
+                                    <h3 id="total-orders">0</h3>
+                                    <p>Total Orders</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div>
+                                    <h3 id="total-revenue">₹0</h3>
+                                    <p>Revenue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-section" id="admin-products">
+                        <div class="section-header">
+                            <h2>Manage Products</h2>
+                            <button class="btn btn-primary" id="add-product-btn">
+                                <i class="fas fa-plus"></i> Add New Product
+                            </button>
+                        </div>
+                        <div class="products-table-container">
+                            <table class="admin-table" id="admin-products-table">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-products-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="admin-section" id="admin-orders">
+                        <h2>Orders</h2>
+                        <p>Order management coming soon...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Fresh Farm Organics</h3>
+                    <p>Building a culture that thrives on health, ecology, fairness and care.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#products">All Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#admin-login">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Policies</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fresh Farm Organics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body" id="product-modal-body"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="product-form-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <h3 id="product-form-title">Add New Product</h3>
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    <div class="form-group">
+                        <label>Product Name *</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="product-category" required></select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Price (₹) *</label>
+                            <input type="number" id="product-price" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Discounted Price (₹)</label>
+                            <input type="number" id="product-discounted-price">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Unit *</label>
+                            <input type="text" id="product-unit" placeholder="e.g., 5kg" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Stock Quantity *</label>
+                            <input type="number" id="product-stock" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea id="product-description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Key Features (comma-separated)</label>
+                        <input type="text" id="product-features" placeholder="High Fiber, Organic">
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="url" id="product-image" placeholder="https://...">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Rating (0-5)</label>
+                            <input type="number" id="product-rating" min="0" max="5" step="0.1" value="4.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="product-status">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-checkboxes">
+                        <label>
+                            <input type="checkbox" id="product-bestseller"> Mark as Bestseller
+                        </label>
+                        <label>
+                            <input type="checkbox" id="product-combo"> Combo Product
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeProductFormModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <h3>Shopping Cart</h3>
+                <div id="cart-items-container"></div>
+                <div class="cart-total">
+                    <strong>Total: ₹<span id="cart-total">0</span></strong>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="proceedToOrder()">
+                    Proceed to Order <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- CRITICAL: Firebase SDKs MUST load BEFORE script.js -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <!-- Main JavaScript - MUST come AFTER Firebase -->
+    <script src="script.js"></script>
+</body>
+</html>
