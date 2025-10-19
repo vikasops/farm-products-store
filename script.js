@@ -309,35 +309,51 @@ function showProductModal(productId) {
 }
 
 function renderCategories() {
-    const container = document.getElementById('categories-grid');
+    // 1. Render to categories dropdown (in navigation)
     const dropdown = document.getElementById('categories-dropdown');
+    
+    // 2. Render to categories grid (ONLY in categories-section)
+    const categoriesSection = document.querySelector('.categories-section .categories-grid');
+    
+    // 3. Render to filter select
     const filterSelect = document.getElementById('category-filter');
+    
+    // 4. Render to product category select (admin form)
     const productCategorySelect = document.getElementById('product-category');
     
-    if (container) {
-        container.innerHTML = state.categories.map(cat => `
-            <div class="category-card" onclick="filterByCategory('${cat.name}')">
-                <h3>${cat.name}</h3>
-            </div>
-        `).join('');
-    }
-    
+    // ONLY render to dropdown
     if (dropdown) {
         dropdown.innerHTML = state.categories.map(cat => `
             <li><a href="#products" onclick="filterByCategory('${cat.name}')">${cat.name}</a></li>
         `).join('');
     }
     
+    // ONLY render to categories section grid
+    if (categoriesSection) {
+        categoriesSection.innerHTML = state.categories.map(cat => `
+            <div class="category-card" onclick="filterByCategory('${cat.name}')">
+                <h3>${cat.name}</h3>
+            </div>
+        `).join('');
+    }
+    
+    // Render to filter dropdown
     if (filterSelect) {
         filterSelect.innerHTML = '<option value="">All Categories</option>' +
             state.categories.map(cat => `<option value="${cat.name}">${cat.name}</option>`).join('');
     }
     
+    // Render to product form
     if (productCategorySelect) {
         productCategorySelect.innerHTML = state.categories.map(cat => 
             `<option value="${cat.name}">${cat.name}</option>`
         ).join('');
     }
+    
+    // DO NOT render to:
+    // - Any random 'categories-grid' container
+    // - document.getElementById('categories-grid') 
+    // Because that might be a global container
 }
 
 function renderReviews() {
