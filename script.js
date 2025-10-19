@@ -6,8 +6,6 @@
 // ====================================
 // FIREBASE CONFIGURATION
 // ====================================
-// IMPORTANT: Replace this with YOUR Firebase config from Firebase Console
-// Go to: Firebase Console → Project Settings → Your apps → Config
 const firebaseConfig = {
   apiKey: "AIzaSyC9HigH5SDetbx_NMFtJCjW3HoDo3Xootg",
   authDomain: "farm-products-store.firebaseapp.com",
@@ -22,7 +20,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
-console.log('✅ Firebase initialized');
+console.log('✅ Firebase initialized successfully');
 
 // ====================================
 // STATE MANAGEMENT
@@ -60,6 +58,7 @@ const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdummy/viewform'
 async function loadProducts() {
     try {
         showLoading();
+        console.log('🔄 Loading products from Firestore...');
         const snapshot = await db.collection('products').where('status', '==', 'active').get();
         state.products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         console.log(`✅ Loaded ${state.products.length} products from Firestore`);
@@ -67,8 +66,35 @@ async function loadProducts() {
         hideLoading();
     } catch (error) {
         console.error('❌ Error loading products:', error);
-        showToast('Error loading products. Please check Firebase connection.', 'error');
         hideLoading();
+        
+        // Show user-friendly message
+        const container = document.getElementById('bestsellers-grid');
+        if (container) {
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #fff; border-radius: 10px;">
+                    <h3 style="color: #dc3545; margin-bottom: 20px;">⚠️ No Products Found</h3>
+                    <p style="margin-bottom: 20px;">It looks like there are no products in the database yet.</p>
+                    <p style="margin-bottom: 20px;"><strong>To add sample products:</strong></p>
+                    <ol style="text-align: left; max-width: 500px; margin: 0 auto 20px;">
+                        <li>Open browser console (Press F12)</li>
+                        <li>Type: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">seedInitialProducts()</code></li>
+                        <li>Press Enter</li>
+                        <li>Wait for success message</li>
+                        <li>Refresh the page</li>
+                    </ol>
+                    <button class="btn btn-primary" onclick="seedInitialProducts()" style="margin: 10px;">
+                        <i class="fas fa-seedling"></i> Seed Products Now
+                    </button>
+                    <button class="btn btn-secondary" onclick="location.reload()" style="margin: 10px;">
+                        <i class="fas fa-sync"></i> Refresh Page
+                    </button>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">
+                        Error details: ${error.message}
+                    </p>
+                </div>
+            `;
+        }
     }
 }
 
@@ -215,7 +241,14 @@ function renderBestsellers() {
     if (!container) return;
     const bestsellers = state.products.filter(p => p.bestseller);
     if (bestsellers.length === 0) {
-        container.innerHTML = '<p>No bestsellers yet. Add some products first!</p>';
+        container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                <p>No bestsellers yet. Click the button below to add sample products!</p>
+                <button class="btn btn-primary" onclick="seedInitialProducts()" style="margin-top: 20px;">
+                    <i class="fas fa-seedling"></i> Add Sample Products
+                </button>
+            </div>
+        `;
         return;
     }
     container.innerHTML = bestsellers.slice(0, 6).map(product => createProductCardHTML(product)).join('');
@@ -756,14 +789,18 @@ function hideLoading() {
 
 async function seedInitialProducts() {
     try {
+        showLoading();
+        console.log('🌱 Checking for existing products...');
+        
         const existingProducts = await db.collection('products').limit(1).get();
         if (!existingProducts.empty) {
-            console.log('ℹ️ Products already exist in database. Skipping seed.');
+            console.log('ℹ️ Products already exist in database.');
             const answer = confirm('Products already exist. Do you want to add more sample products anyway?');
-            if (!answer) return;
+            if (!answer) {
+                hideLoading();
+                return;
+            }
         }
-        
-        showLoading();
         
         const sampleProducts = [
             {
@@ -869,13 +906,20 @@ async function seedInitialProducts() {
         }
         
         hideLoading();
-        showToast(`${sampleProducts.length} products added successfully!`, 'success');
-        await loadProducts();
+        showToast(`${sampleProducts.length} products added successfully! Refreshing...`, 'success');
+        
+        // Reload products after 1 second
+        setTimeout(() => {
+            loadProducts();
+        }, 1000);
         
     } catch (error) {
         console.error('❌ Error seeding products:', error);
         hideLoading();
         showToast('Error seeding products: ' + error.message, 'error');
+        
+        // Show detailed error message
+        alert(`Error adding products:\n\n${error.message}\n\nMake sure:\n1. You've created Firestore database\n2. Security rules allow writing\n3. You're connected to the internet`);
     }
 }
 
@@ -884,10 +928,14 @@ async function seedInitialProducts() {
 // ====================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Website loaded');
-    
+    console.log('🚀 Farm Products Website Loaded');
+    console.log('📦 Loading cart from localStorage...');
     loadCartFromLocalStorage();
+    
+    console.log('🔄 Loading products from Firestore...');
     loadProducts();
+    
+    console.log('📋 Rendering categories...');
     renderCategories();
     
     window.addEventListener('hashchange', () => {
@@ -1011,7 +1059,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     console.log('✅ All event listeners initialized');
-    console.log('ℹ️ To seed initial products, open browser console and run: seedInitialProducts()');
+    console.log('💡 TIP: To add sample products, click the button on the page or run in console: seedInitialProducts()');
 });
 
+// Make seed function globally available
 window.seedInitialProducts = seedInitialProducts;
