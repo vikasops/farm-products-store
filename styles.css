@@ -2114,4 +2114,56 @@ input, select, textarea {
         height: 36px;
     }
 }
+/* ===== HIDE ANNOUNCEMENT BANNER ===== */
+.announcement-bar {
+    display: none !important;
+}
+
+/* ===== HIDE STATIC CATEGORIES BAR ===== */
+
+/* Hide categories appearing as static bar */
+.hero + .categories-grid,
+.header + .categories-grid,
+nav + .categories-grid,
+.main-nav + .categories-grid,
+body > .categories-grid,
+main > .categories-grid {
+    display: none !important;
+}
+
+/* Hide category cards from wrong sections */
+.why-choose-us .category-card,
+.hero .category-card,
+.features-grid .category-card,
+.bestsellers-section .category-card,
+header .category-card,
+nav .category-card {
+    display: none !important;
+}
+
+/* ONLY show categories in proper places */
+.categories-section .categories-grid {
+    display: grid !important;
+}
+
+.categories-section .category-card {
+    display: block !important;
+}
+
+/* Fix dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 10px 0;
+    min-width: 200px;
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+}
+
 ```
